@@ -12,6 +12,7 @@ const client = new Client({
 });
 
 client.commands = new Collection();
+client.servers = new Collection();
 
 const loadCommands = async () => {
     const commandFolders = await readdir(join(__dirname, 'commands'));
@@ -66,6 +67,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
         });
     }
 });
+
+client.on(Events.Error, async (e) => {
+    error(e);
+})
 
 const initialize = (async () => {
     await loadCommands();
