@@ -86,6 +86,7 @@ class MusicQueue {
         this.textChannel.send('Disconnected from the voice channel, the queue has been cleared.');
         this.connection?.destroy();
         this.connection = null;
+        this.songs = [];
     }
 
     setVolume(newVolume) {
